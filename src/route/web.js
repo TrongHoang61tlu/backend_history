@@ -1,6 +1,8 @@
 import express from "express";
 import homeController from "../constrollers/homeController";
 import userController from "../constrollers/userControlers";
+import courseController from "../constrollers/courseController";
+import newsController from "../constrollers/newsController";
 
 let router = express.Router();
 
@@ -19,6 +21,21 @@ let initWebRouters = (app) => {
 
   //users
   router.get("/api/users", userController.handleGetUsers);
+  router.post("/api/create-new-user", userController.handleCreateNewUser);
+  router.put("/api/edit-user", userController.handleEditUser);
+  router.delete("/api/delete-user", userController.handleDeleteUser);
+
+  //courses
+  router.get("/api/courses", courseController.handleGetCousers);
+  router.post("/api/create-new-course", courseController.handleCreateNewCourse);
+  router.put("/api/edit-course", courseController.handleEditCourse);
+  router.delete("/api/delete-course", courseController.handleDeleteCourse);
+
+  //news
+  router.get("/api/news", newsController.handleGetNews);
+  router.post("/api/create-news", newsController.handleCreateNews);
+  router.put("/api/edit-news", newsController.handleEditNews);
+  router.delete("/api/delete-news", newsController.handleDeleteNews);
 
   return app.use("/", router);
 };
