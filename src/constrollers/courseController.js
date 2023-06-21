@@ -40,9 +40,25 @@ let handleDeleteCourse = async (req, res) => {
   return res.status(200).json(message);
 };
 
+let handleGetDetailCourseById = async(req, res) => {
+  try {
+    let infor = await courseService.getDetailCourseById(req.body.id);
+    return res.status(200).json(infor);
+  } catch (e) {
+    console.log(e);
+    return res.status(200).json({
+      errCode: -1,
+      errMessage: 'Error from the server'
+    })
+  }
+}
+
+
 module.exports = {
   handleGetCousers: handleGetCousers,
   handleCreateNewCourse: handleCreateNewCourse,
   handleEditCourse: handleEditCourse,
   handleDeleteCourse: handleDeleteCourse,
+  handleGetDetailCourseById :handleGetDetailCourseById,
+
 };

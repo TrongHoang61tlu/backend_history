@@ -1,8 +1,8 @@
+import { response } from "express";
 import db from "../models/index";
 
 let getCourses = (courseId) => {
   return new Promise(async (resolve, reject) => {
-
     try {
       let courses = "";
       if (courseId === "ALL") {
@@ -94,9 +94,39 @@ let deleteCourse = (courseId) => {
     });
   });
 };
+
+let getDetailCourseById = () => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let data = await db.Courses.findAll({
+        include: [
+          {
+            model: db.Course_content,
+            as: "CourseContents",
+            include: [
+              { model: db.Video, as: "Video" },
+              { model: db.Quizs, as: "Quizs" },
+            ],
+          },
+        ],
+        raw: false,
+        nest: true,
+      });
+
+      resolve({
+        errCode: 0,
+        data: data,
+      });
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
 module.exports = {
   getCourses: getCourses,
   createNewCourse: createNewCourse,
   updateCourse: updateCourse,
   deleteCourse: deleteCourse,
+  getDetailCourseById: getDetailCourseById,
 };

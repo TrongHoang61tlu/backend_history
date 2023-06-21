@@ -9,6 +9,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Course_content.belongsTo(models.Courses, {foreignKey: 'courseID'});
+      Course_content.hasOne(models.Video, {foreignKey: 'contentID', as : 'Video'});
+      Course_content.hasMany(models.Quizs, {foreignKey: 'contentId', as : 'Quizs'});
     }
   }
   Course_content.init(
@@ -23,6 +26,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "Course_content",
+      tableName: "Course_content",
     }
   );
   return Course_content;
