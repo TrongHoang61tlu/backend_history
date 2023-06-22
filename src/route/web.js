@@ -6,6 +6,7 @@ import newsController from "../constrollers/newsController";
 import courseContentController from "../constrollers/courseContentsController";
 import videoController from "../constrollers/videoController";
 import quizzController from "../constrollers/quizzController";
+import historiesController from "../constrollers/historiesController";
 
 let router = express.Router();
 
@@ -73,6 +74,11 @@ let initWebRouters = (app) => {
   router.post("/api/create-quizz", quizzController.handleCreateQuizz);
   router.put("/api/edit-quizz", quizzController.handleEditQuizz);
   router.delete("/api/delete-quizz", quizzController.handleDeleteQuizz);
+
+  //Historíe
+  router.get("/api/histories", historiesController.handleGetHistories);
+    router.post("api/create-histories", historiesController.handleCreateHistories)
+
 
   return app.use("/", router);
 };
