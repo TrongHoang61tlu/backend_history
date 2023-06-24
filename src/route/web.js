@@ -7,6 +7,7 @@ import courseContentController from "../constrollers/courseContentsController";
 import videoController from "../constrollers/videoController";
 import quizzController from "../constrollers/quizzController";
 import historiesController from "../constrollers/historiesController";
+import commentController from "../constrollers/commentController";
 
 let router = express.Router();
 
@@ -77,8 +78,14 @@ let initWebRouters = (app) => {
 
   //Historíe
   router.get("/api/histories", historiesController.handleGetHistories);
-    router.post("api/create-histories", historiesController.handleCreateHistories)
+  router.post(
+    "api/create-histories",
+    historiesController.handleCreateHistories
+  );
 
+  //comment
+  router.get("/api/comments", commentController.handleGetComment);
+  router.post("/api/create-comments", commentController.handleCreateComment);
 
   return app.use("/", router);
 };
