@@ -79,7 +79,7 @@ let initWebRouters = (app) => {
   //Historíe
   router.get("/api/histories", historiesController.handleGetHistories);
   router.post(
-    "api/create-histories",
+    "/api/create-histories",
     historiesController.handleCreateHistories
   );
 

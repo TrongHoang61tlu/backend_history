@@ -23,6 +23,9 @@ module.exports = {
       courseID: {
         type: Sequelize.INTEGER
       },
+      userId: {
+        type: Sequelize.INTEGER
+      },
       status: {
         type: Sequelize.STRING
       }, 

@@ -38,6 +38,9 @@ module.exports = {
       token: {
         type: Sequelize.STRING
       }, 
+      courseId : {
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

@@ -18,7 +18,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       learningTime: {
-        type: Sequelize.DATE,
+        type: Sequelize.STRING,
       },
       score: {
         type: Sequelize.STRING,

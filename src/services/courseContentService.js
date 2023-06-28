@@ -29,6 +29,7 @@ let createNewCourseContent = (data) => {
           lecture: data.lecture,
           description: data.description,
           courseID : data.courseID,
+          userId : data.userId,
           status: data.status,
         });
         resolve({
@@ -61,6 +62,7 @@ let updateCourseContent = (data) => {
             courseContent.description = data.description;
             courseContent.courseID = data.courseID;
             courseContent.status = data.status;
+            courseContent.userId = data.userId;
           await courseContent.save();
           resolve({
             errCode: 0,

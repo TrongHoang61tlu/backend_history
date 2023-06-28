@@ -9,7 +9,7 @@ let handleGetHistories = async (req, res) => {
         });
     }
     let histories = await historiesService.getHistories(id);
-    return response.status(200).json({
+    return res.status(200).json({
         errCode: 0,
         errMessage: "Ok",
         histories,
@@ -18,7 +18,7 @@ let handleGetHistories = async (req, res) => {
 
 let handleCreateHistories =  async(req, res) => {
     let message = await historiesService.createNewHistories(req.body);
-    return response.status(200).json(message);
+    return res.status(200).json(message);
 } 
 
 module.exports = {

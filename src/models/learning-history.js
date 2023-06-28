@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       courseID: DataTypes.INTEGER,
       contentID: DataTypes.INTEGER,
       userID: DataTypes.INTEGER,
-      learningTime: DataTypes.DATE,
+      learningTime: DataTypes.STRING,
       score: DataTypes.STRING,
       status: DataTypes.STRING,
 
